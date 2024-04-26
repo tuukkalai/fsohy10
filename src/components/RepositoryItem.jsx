@@ -1,10 +1,11 @@
-import {View, Text} from "react-native";
+import { View } from "react-native";
+import Text from "./Text";
 
 
-const RepositoryItem = ({ index, item }) => {
+const RepositoryItem = ({ item }) => {
   return (
-    <View key={index}>
-      <Text>Full name: {item.fullName}</Text>
+    <View>
+      <Text fontWeight="bold">Full name: {item.fullName}</Text>
       <Text>Description: {item.description}</Text>
       <Text>Language: {item.language}</Text>
       <Text>Stars: {item.stargazersCount}</Text>
