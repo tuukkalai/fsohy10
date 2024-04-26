@@ -3,7 +3,7 @@ const theme = {
     textPrimary: "#444444",
     textSecondary: "#777787",
     primaryBg: "#cdedff",
-    secondaryBg: "#cdffed",
+    secondaryBg: "#fefdfd",
   },
   font: {
     sans: "System",
