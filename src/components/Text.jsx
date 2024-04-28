@@ -26,11 +26,15 @@ const styles = StyleSheet.create({
     },
     bold: {
       fontWeight: theme.fontWeight.bold,
+    },
+    center: {
+      marginLeft: "auto",
+      marginRight: "auto",
     }
   }
 });
 
-const Text = ({ color, fontSize, fontWeight, serif, style, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, serif, style, align, ...props }) => {
   const textStyle = [
     styles.text.normal,
     color === "secondary" && styles.text.secondary,
@@ -38,6 +42,7 @@ const Text = ({ color, fontSize, fontWeight, serif, style, ...props }) => {
     fontSize === "small" && styles.text.small,
     fontWeight === "bold" && styles.text.bold,
     serif === "serif" && styles.text.serif,
+    align === "center" && styles.text.center,
     style
   ];
 

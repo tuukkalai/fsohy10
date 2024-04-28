@@ -10,14 +10,14 @@ const theme = {
     serif: "Baskerville",
   },
   fontSize: {
-    small: 14,
-    medium: 20,
-    large: 35,
-  },
-  lineHeight: {
     small: 16,
     medium: 22,
-    large: 32
+    large: 48,
+  },
+  lineHeight: {
+    small: 18,
+    medium: 24,
+    large: 48,
   },
   fontWeight: {
     normal: "400",
