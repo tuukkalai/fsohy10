@@ -7,7 +7,7 @@ const theme = {
   },
   font: {
     sans: "System",
-    serif: "Baskerville",
+    serif: "serif",
   },
   fontSize: {
     small: 16,

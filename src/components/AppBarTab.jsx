@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ({ title, to }) => {
   return (
-    <Pressable style={styles.nav}>
+    <Pressable>
       <Link to={to}>
         <Text fontSize="medium" fontWeight="bold" serif style={{ paddingTop: 10 }}>
           {title}
