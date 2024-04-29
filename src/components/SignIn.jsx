@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     borderColor: "#444444",
-    padding: 8
+    padding: 8,
   },
   button: {
     backgroundColor: "#4561e4",
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingRight: 8,
     borderRadius: 4,
-  }
+  },
 });
 
 const SignIn = () => {
@@ -47,8 +47,16 @@ const SignIn = () => {
         onChangeText={formik.handleChange("password")}
         secureTextEntry
       />
-      <Pressable style={styles.button} onPress={formik.handleSubmit}>
-        <Text align="center" style={{ color: "#ffffff" }}>Login</Text>
+      <Pressable
+        style={styles.button}
+        onPress={formik.handleSubmit}
+      >
+        <Text
+          align="center"
+          style={{ color: "#ffffff" }}
+        >
+          Login
+        </Text>
       </Pressable>
     </View>
   );
