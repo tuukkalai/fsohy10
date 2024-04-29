@@ -7,7 +7,7 @@ const theme = {
   },
   font: {
     sans: "System",
-    serif: "Baskerville",
+    serif: "serif",
   },
   fontSize: {
     small: 16,
@@ -23,6 +23,6 @@ const theme = {
     normal: "400",
     bold: "700",
   },
-}
+};
 
 export default theme;
