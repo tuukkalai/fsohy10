@@ -6,8 +6,7 @@ const theme = {
     secondaryBg: "#fefdfd",
   },
   font: {
-    sans: "System",
-    serif: "serif",
+    sans: "System"
   },
   fontSize: {
     small: 16,

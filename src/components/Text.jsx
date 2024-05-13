@@ -13,9 +13,6 @@ const styles = StyleSheet.create({
     secondary: {
       color: theme.color.textSecondary
     },
-    serif: {
-      fontFamily: theme.font.serif,
-    },
     large: {
       fontSize: theme.fontSize.large,
       lineHeight: theme.lineHeight.large,
@@ -34,14 +31,13 @@ const styles = StyleSheet.create({
   }
 });
 
-const Text = ({ color, fontSize, fontWeight, serif, style, align, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, style, align, ...props }) => {
   const textStyle = [
     styles.text.normal,
     color === "secondary" && styles.text.secondary,
     fontSize === "large" && styles.text.large,
     fontSize === "small" && styles.text.small,
     fontWeight === "bold" && styles.text.bold,
-    serif === "serif" && styles.text.serif,
     align === "center" && styles.text.center,
     style
   ];
