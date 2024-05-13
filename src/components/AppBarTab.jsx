@@ -16,7 +16,6 @@ const AppBarTab = ({ title, to }) => {
           style={styles.nav}
           fontSize="medium"
           fontWeight="bold"
-          serif="serif"
         >
           {title}
         </Text>
