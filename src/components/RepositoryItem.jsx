@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     padding: 16,
     backgroundColor: "#ffffff",
-    gap: 16
+    gap: 16,
   },
   top: {
     flexGrow: 1,
     flexDirection: "row",
-    gap: 16
+    gap: 16,
   },
   details: {
     flexGrow: 1,
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
   image: {
     width: 64,
     height: 64,
-    borderRadius: 4
+    borderRadius: 4,
   },
   numbers: {
     flexDirection: "row",
     justifyContent: "space-around",
     item: {
-      gap: 4
-    }
+      gap: 4,
+    },
   },
   languages: {
     flexDirection: "row",
@@ -37,51 +37,86 @@ const styles = StyleSheet.create({
   language: {
     padding: 8,
     backgroundColor: "#5141ef",
-    borderRadius: 4
-  }
+    borderRadius: 4,
+  },
 });
 
-const roundCount = ( count ) => {
+const roundCount = (count) => {
   if (count >= 1000) {
-    return Math.round(count/100)/10 + " k";
+    return Math.round(count / 100) / 10 + " k";
   }
   return count;
-}
+};
 
 const RepositoryItem = ({ item }) => {
   return (
     <View style={styles.flexContainer}>
       <View style={styles.top}>
         <View style={styles.image}>
-          <Image source={{uri: item.ownerAvatarUrl}} style={styles.image} />
+          <Image
+            source={{ uri: item.ownerAvatarUrl }}
+            style={styles.image}
+          />
         </View>
         <View style={styles.details}>
           <Text fontWeight="bold">{item.fullName}</Text>
-          <View style={{flexDirection: "row"}}>
-            <Text color="secondary" style={{flex: 1, flexWrap: "wrap"}}>{item.description}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              color="secondary"
+              style={{ flex: 1, flexWrap: "wrap" }}
+            >
+              {item.description}
+            </Text>
           </View>
           <View style={styles.languages}>
             <View style={styles.language}>
-              <Text style={{ color: "#ffffff" }}>{item.language}</Text>
+              <Text
+                style={{ color: "#ffffff" }}
+                code
+              >
+                {item.language}
+              </Text>
             </View>
           </View>
         </View>
       </View>
       <View style={styles.numbers}>
         <View style={styles.numbers.item}>
-          <Text fontWeight="bold" align="center">{roundCount(item.stargazersCount)}</Text>
-          <Text align="center">Star{item.stargazersCount === 1 ? "" : "s"}</Text>
+          <Text
+            fontWeight="bold"
+            align="center"
+          >
+            {roundCount(item.stargazersCount)}
+          </Text>
+          <Text align="center">
+            Star{item.stargazersCount === 1 ? "" : "s"}
+          </Text>
         </View>
         <View style={styles.numbers.item}>
-          <Text fontWeight="bold" align="center">{roundCount(item.forksCount)}</Text>
+          <Text
+            fontWeight="bold"
+            align="center"
+          >
+            {roundCount(item.forksCount)}
+          </Text>
           <Text align="center">Fork{item.forksCount === 1 ? "" : "s"}</Text>
         </View>
         <View style={styles.numbers.item}>
-          <Text fontWeight="bold" align="center">{roundCount(item.reviewCount)}</Text>
+          <Text
+            fontWeight="bold"
+            align="center"
+          >
+            {roundCount(item.reviewCount)}
+          </Text>
           <Text align="center">Review{item.reviewCount === 1 ? "" : "s"}</Text>
         </View>
         <View style={styles.numbers.item}>
-          <Text fontWeight="bold" align="center">{roundCount(item.ratingAverage)}</Text>
+          <Text
+            fontWeight="bold"
+            align="center"
+          >
+            {roundCount(item.ratingAverage)}
+          </Text>
           <Text align="center">Rating</Text>
         </View>
       </View>

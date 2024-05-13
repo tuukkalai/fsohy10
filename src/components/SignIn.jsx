@@ -51,23 +51,33 @@ const SignIn = () => {
   return (
     <View style={styles.container}>
       <TextInput
-        style={[styles.input, formik.errors.username && formik.touched.username && styles.inputError]}
+        style={[
+          styles.input,
+          formik.errors.username &&
+            formik.touched.username &&
+            styles.inputError,
+        ]}
         placeholder="Username"
         value={formik.values.username}
         onChangeText={formik.handleChange("username")}
       />
       {formik.touched.username && formik.errors.username && (
-        <Text style={{ color: 'red' }}>{formik.errors.username}</Text>
+        <Text style={{ color: "red" }}>{formik.errors.username}</Text>
       )}
       <TextInput
-        style={[styles.input, formik.errors.password && formik.touched.password && styles.inputError]}
+        style={[
+          styles.input,
+          formik.errors.password &&
+            formik.touched.password &&
+            styles.inputError,
+        ]}
         placeholder="Password"
         value={formik.values.password}
         onChangeText={formik.handleChange("password")}
         secureTextEntry
       />
       {formik.touched.password && formik.errors.password && (
-        <Text style={{ color: 'red' }}>{formik.errors.password}</Text>
+        <Text style={{ color: "red" }}>{formik.errors.password}</Text>
       )}
       <Pressable
         style={styles.button}

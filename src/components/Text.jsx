@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
       fontWeight: theme.fontWeight.normal,
     },
     secondary: {
-      color: theme.color.textSecondary
+      color: theme.color.textSecondary,
     },
     code: {
       fontFamily: theme.font.mono,
@@ -31,11 +31,19 @@ const styles = StyleSheet.create({
     center: {
       marginLeft: "auto",
       marginRight: "auto",
-    }
-  }
+    },
+  },
 });
 
-const Text = ({ color, fontSize, fontWeight, style, align, ...props }) => {
+const Text = ({
+  color,
+  fontSize,
+  fontWeight,
+  code,
+  style,
+  align,
+  ...props
+}) => {
   const textStyle = [
     styles.text.normal,
     color === "secondary" && styles.text.secondary,
@@ -47,7 +55,12 @@ const Text = ({ color, fontSize, fontWeight, style, align, ...props }) => {
     style,
   ];
 
-  return <NativeText style={textStyle} {...props} />
+  return (
+    <NativeText
+      style={textStyle}
+      {...props}
+    />
+  );
 };
 
 export default Text;

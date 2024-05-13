@@ -6,7 +6,6 @@ import RepositoryList from "./RepositoryList";
 import theme from "../theme";
 import SignIn from "./SignIn";
 
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.color.secondaryBg,
@@ -19,11 +18,25 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-        <Routes>
-          <Route path="/" element={<RepositoryList />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={<RepositoryList />}
+        />
+        <Route
+          path="signin"
+          element={<SignIn />}
+        />
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to="/"
+              replace
+            />
+          }
+        />
+      </Routes>
     </View>
   );
 };
