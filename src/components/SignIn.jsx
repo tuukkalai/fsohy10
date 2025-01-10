@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Text from "./Text";
 import theme from "../theme";
 import useSignIn from "../hooks/useSignIn";
-import AuthStorage from "../utils/authStorage";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -46,12 +46,12 @@ const validationSchema = yup.object().shape({
 
 const SignIn = () => {
   const [signIn] = useSignIn();
-  const authStorage = new AuthStorage();
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     const { username, password } = values;
     try {
-      const { data } = await signIn({ username, password });
-      authStorage.setAccessToken(data.authenticate.accessToken);
+      await signIn({ username, password });
+      navigate("/");
     } catch (e) {
       console.error("Error in SignIn.onSubmit:", e);
     }
