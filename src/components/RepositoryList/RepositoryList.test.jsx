@@ -1,4 +1,4 @@
-import { debug, screen, render } from '@testing-library/react-native';
+import { debug, screen, render, within } from '@testing-library/react-native';
 import { RepositoryListContainer } from './index.jsx';
 import { roundCount } from "../../utils/roundCount";
 
@@ -52,38 +52,27 @@ describe('RepositoryList', () => {
       // screen.debug();
       const repositoryItems = screen.getAllByTestId('repositoryItem');
       // console.log(repositories["edges"].length);
-      // const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+      const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
       // Compare the length of the repository list
       expect(repositoryItems.length).toBe(repositories.edges.length);
 
-      // Repo details are visible
-      // for (let i = 0; i < repositories.edges.length; i++){
-      //   expect(screen.getByText(repositories.edges[i].node.fullName)).toBeTruthy();
-      //   expect(screen.getByText(repositories.edges[i].node.description)).toBeTruthy();
-      //   expect(screen.getByText(repositories.edges[i].node.language)).toBeTruthy();
-      // }
-      repositoryItems.forEach((repo, i) => {
-        const {
-          fullName,
-          description,
-          language,
-          forksCount,
-          stargazersCount,
-          ratingAverage,
-          reviewCount,
-        } = repositories.edges[i].node;
+      for (let i = 0; i < repositories.edges.length; i++){
+        let repoIn = repositories.edges[i].node;
+        let repoOut = repositoryItems[i];
 
-        expect(screen.getByText(fullName)).toBeTruthy();
-        expect(screen.getByText(description)).toBeTruthy();
-        expect(screen.getByText(language)).toBeTruthy();
-        // The numbers do not work with getByText
-        // expect(screen.getByText(roundCount(forksCount))).toBeTruthy();
-        // expect(screen.getByText(roundCount(stargazersCount))).toBeTruthy();
-        // expect(screen.getByText(roundCount(ratingAverage) + " Rating")).toBeTruthy();
-        // expect(screen.getByText(roundCount(reviewCount))).toBeTruthy();
-        console.log(`fullName, desc, lang are truthy for ${i}`)
-      });
+        // repo is visible
+        expect(repoOut).toBeVisible();
+
+        // fields are listed in repo details
+        expect(within(repoOut).getByText(repoIn.fullName)).toHaveTextContent(repoIn.fullName);
+        expect(within(repoOut).getByText(repoIn.description)).toHaveTextContent(repoIn.description);
+        expect(within(repoOut).getByText(repoIn.language)).toHaveTextContent(repoIn.language);
+        expect(within(repoOut).getByText(roundCount(repoIn.forksCount))).toHaveTextContent(roundCount(repoIn.forksCount));
+        expect(within(repoOut).getByText(roundCount(repoIn.stargazersCount))).toHaveTextContent(roundCount(repoIn.stargazersCount));
+        expect(within(repoOut).getByText(roundCount(repoIn.ratingAverage))).toHaveTextContent(roundCount(repoIn.ratingAverage));
+        expect(within(repoOut).getByText(roundCount(repoIn.reviewCount))).toHaveTextContent(roundCount(repoIn.reviewCount));
+      }
     });
   });
 });
