@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
   separator: {
     height: 10,
   },
+  loading: {
+    display: "flex",
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
@@ -25,7 +31,9 @@ const RepositoryList = () => {
   return (
     <>
       {loading ? (
-        <Text>Loading</Text>
+        <div style={styles.loading}>
+          <Text>Loading</Text>
+        </div>
       ) : (
         <FlatList
           style={styles.content}

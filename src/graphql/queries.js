@@ -21,3 +21,12 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `;
+
+export const WHOAMI = gql`
+  query Whoami {
+    me {
+      id
+      username
+    }
+  }
+`;
