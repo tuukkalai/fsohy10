@@ -31,9 +31,9 @@ const RepositoryList = () => {
   return (
     <>
       {loading ? (
-        <div style={styles.loading}>
-          <Text>Loading</Text>
-        </div>
+        <View style={styles.loading}>
+          <Text>Loading...</Text>
+        </View>
       ) : (
         <FlatList
           style={styles.content}
