@@ -8,7 +8,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ title, to }) => {
+const AppBarTab = ({ title, to, visible = true }) => {
+  if (!visible) {
+    return "";
+  }
+
   return (
     <Pressable>
       <Link to={to}>
