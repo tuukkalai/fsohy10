@@ -50,7 +50,10 @@ const roundCount = (count) => {
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.flexContainer}>
+    <View
+      testID="repositoryItem"
+      style={styles.flexContainer}
+    >
       <View style={styles.top}>
         <View style={styles.image}>
           <Image
