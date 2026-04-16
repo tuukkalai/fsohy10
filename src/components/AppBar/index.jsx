@@ -9,11 +9,8 @@ import { WHOAMI } from "../../graphql/queries";
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight + 10,
     backgroundColor: theme.color.primaryBg,
-  },
-  nav: {
-    padding: 8,
   },
 });
 
