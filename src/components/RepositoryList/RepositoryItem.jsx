@@ -1,5 +1,6 @@
 import { View, StyleSheet, Image } from "react-native";
 import Text from "../Text";
+import roundCount from "../../utils/roundCount";
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -41,16 +42,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const roundCount = (count) => {
-  if (count >= 1000) {
-    return Math.round(count / 100) / 10 + " k";
-  }
-  return count;
-};
-
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.flexContainer}>
+    <View
+      testID="repositoryItem"
+      style={styles.flexContainer}
+    >
       <View style={styles.top}>
         <View style={styles.image}>
           <Image
