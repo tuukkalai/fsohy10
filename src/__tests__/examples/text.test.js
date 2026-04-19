@@ -13,7 +13,7 @@ describe("Greeting", () => {
   it("renders a greeting message based on the name prop", () => {
     render(<Greeting name="Kalle" />);
 
-    screen.debug();
+    // screen.debug();  // Show component in console
 
     expect(screen.getByText("Hello Kalle!")).toBeDefined();
   });

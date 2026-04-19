@@ -1,5 +1,6 @@
-import { RepositoryListContainer } from "../components/RepositoryList/index.jsx";
-import { render, screen } from "@testing-library/react-native";
+import { RepositoryListContainer } from "../../components/RepositoryList/index.jsx";
+import { render, screen, within } from "@testing-library/react-native";
+import roundCount from "../../utils/roundCount";
 
 describe("RepositoryList", () => {
   describe("RepositoryListContainer", () => {
@@ -48,14 +49,46 @@ describe("RepositoryList", () => {
       };
 
       render(<RepositoryListContainer repositories={repositories} />);
-      screen.debug();
+
+      // screen.debug();
+
+      const testTextElements = ["fullName", "description", "language"];
+      const testNumElements = [
+        { forksCount: "Fork" },
+        { stargazersCount: "Star" },
+        { ratingAverage: "Rating" },
+        { reviewCount: "Review" },
+      ];
 
       const repositoryItems = screen.getAllByTestId("repositoryItem");
-      const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
-      console.log(firstRepositoryItem);
-      console.log(secondRepositoryItem);
 
-      expect(screen.getByText("jaredpalmer/formik")).toBeDefined();
+      // Loop through repository items rendered on the screen
+      for (const [i, item] of repositoryItems.entries()) {
+        const node = repositories["edges"][i]["node"];
+
+        // Loop through textual content items
+        for (const textEl of testTextElements) {
+          // expect(
+          //   within(item).getByText(node[textEl])
+          // ).toHaveTextContent(node[textEl]);
+          expect(within(item).getByText(node[textEl])).toBeOnTheScreen();
+        }
+
+        // Loop through numerical content items
+        for (const numEl of testNumElements) {
+          for (const k in numEl) {
+            const labelParent = within(item).getByText(numEl[k], {
+              exact: false,
+            }).parent.parent.parent;
+            // expect(
+            //   within(labelParent).getByText(roundCount(node[k]))
+            // ).toHaveTextContent(roundCount(node[k]));
+            expect(
+              within(labelParent).getByText(roundCount(node[k])),
+            ).toBeOnTheScreen();
+          }
+        }
+      }
     });
   });
 });
